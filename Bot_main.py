@@ -21,14 +21,13 @@ async def on_ready():
     if not os.path.exists('./music'):
         os.mkdir('./music')
     print(f'Программа подключена, как {bot.user}')
-    # message.channel.send('I woke up')
 
 
-# @commands.check(check_musics_channels_test)   #Проверка на работоспособность бота и правильность введённых данных доступа к коммандам.
-# @commands.check(check_user_test)
-# @bot.command()
-# async def test(ctx):
-#     await ctx.send(f"***```Проверка пройдена успешно!```***")
+@commands.check(check_musics_channels_test)   #Проверка на работоспособность бота и правильность введённых данных доступа к коммандам.
+@commands.check(check_user_test)
+@bot.command()
+async def test(ctx):
+    await ctx.send(f"***```Проверка пройдена успешно!```***")
 
 
 @commands.check(check_musics_channels)
@@ -193,25 +192,25 @@ async def clear_chat(ctx):
 async def destroy_all_human(ctx):
     await ctx.message.channel.send('***||```Комманда в процессе выполнения...```||***')
 
-#
-# @bot.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.CommandNotFound):
-#         await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, такая комманда отсутствует.```||***', color=0x0aff0f))
-#
-#
-# @bot.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.errors.CommandInvokeError):
-#         await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, во время выполнения комманды произошла временная ошибка, '
-#                                                            f'пожалуйста, повторите комманду.```||***', color=0x0aff0f))
-#
-#
-# @bot.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.errors.CheckFailure):
-#         await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, эту комманду нельзя использовать здесь '
-#                                                            f'или вы не обладаете необходимыми правами.```||***', color=0x0aff0f))
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, такая комманда отсутствует.```||***', color=0x0aff0f))
+
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CommandInvokeError):
+        await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, во время выполнения комманды произошла временная ошибка, '
+                                                           f'пожалуйста, повторите комманду.```||***', color=0x0aff0f))
+
+
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.errors.CheckFailure):
+        await ctx.send(embed = discord.Embed(description = f'***||```{ctx.author.name}, эту комманду нельзя использовать здесь '
+                                                           f'или вы не обладаете необходимыми правами.```||***', color=0x0aff0f))
 
 
 @bot.event
