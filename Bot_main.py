@@ -166,7 +166,7 @@ async def resume(ctx):
     elif voice.is_paused():
         voice.resume()
     else:
-        await ctx.message.reply("***```Мне продожить тишину?```***")
+        await ctx.message.reply("***```Мне продолжить тишину?```***")
 
 
 @commands.check(check_musics_channels)
